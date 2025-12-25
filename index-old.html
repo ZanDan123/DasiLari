@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Da Lat Tourism - Survey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="survey-container">
+        <div class="survey-header">
+            <h1>Welcome to Da Lat Tourism Guide</h1>
+            <p>Help us personalize your experience in the "City of Eternal Spring"</p>
+        </div>
+
+        <form id="surveyForm" class="survey-form">
+            <div class="question-group">
+                <label for="name">What's your name?</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="question-group">
+                <label for="country">Which country are you from?</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+
+            <div class="question-group">
+                <label>What type of attractions interest you most?</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="interests" value="nature"> Nature & Lakes</label>
+                    <label><input type="checkbox" name="interests" value="culture"> Culture & History</label>
+                    <label><input type="checkbox" name="interests" value="food"> Food & Markets</label>
+                    <label><input type="checkbox" name="interests" value="adventure"> Adventure & Sports</label>
+                    <label><input type="checkbox" name="interests" value="photography"> Photography Spots</label>
+                    <label><input type="checkbox" name="interests" value="relaxation"> Relaxation & Wellness</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label for="duration">How many days will you stay in Da Lat?</label>
+                <select id="duration" name="duration" required>
+                    <option value="">Select duration</option>
+                    <option value="1">1 day</option>
+                    <option value="2">2 days</option>
+                    <option value="3">3 days</option>
+                    <option value="4-5">4-5 days</option>
+                    <option value="6+">6+ days</option>
+                </select>
+            </div>
+
+            <div class="question-group">
+                <label for="budget">What's your daily budget (USD)?</label>
+                <select id="budget" name="budget" required>
+                    <option value="">Select budget</option>
+                    <option value="low">Under $30</option>
+                    <option value="medium">$30 - $70</option>
+                    <option value="high">$70 - $150</option>
+                    <option value="luxury">Over $150</option>
+                </select>
+            </div>
+
+            <div class="question-group">
+                <label>Do you have your own transportation?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="transport" value="yes" required> Yes</label>
+                    <label><input type="radio" name="transport" value="no"> No, I'll need ride services</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Start Exploring Da Lat</button>
+        </form>
+
+        <div class="skip-link">
+            <a href="map.html">Skip Survey - Go Directly to Map</a>
+        </div>
+    </div>
+
+    <script src="survey.js"></script>
+</body>
+</html>
