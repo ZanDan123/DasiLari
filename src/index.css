@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+@layer components {
+  .dalat-gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed;
+  }
+  
+  .glass-card {
+    @apply bg-white/95 backdrop-blur-lg rounded-3xl shadow-dalat border border-white/50;
+  }
+  
+  .dalat-button {
+    @apply bg-gradient-to-r from-dalat-pink to-dalat-blue text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 hover:shadow-dalat-hover hover:-translate-y-1;
+  }
+  
+  .tour-highlight {
+    @apply relative z-[9999];
+  }
+}
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  @apply h-full w-full rounded-2xl;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dalat-pink rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-dalat-purple;
+}
