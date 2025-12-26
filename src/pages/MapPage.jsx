@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { Sparkles, Navigation2, Car, Info } from 'lucide-react'
+import { Sparkles, Navigation2, Car, Info, HelpCircle } from 'lucide-react'
 import L from 'leaflet'
+import Joyride from 'react-joyride'
 import AIChat from '../components/AIChat'
+import { useTour } from '../hooks/useTour'
 
 // Fix Leaflet default marker icons
 delete L.Icon.Default.prototype._getIconUrl
@@ -75,6 +77,77 @@ const MapPage = () => {
   const [aiRecommendations, setAiRecommendations] = useState([])
   const [userPreferences, setUserPreferences] = useState(null)
   const [showRideOptions, setShowRideOptions] = useState(false)
+  
+  // Tour guide
+  const { run, startTour, handleJoyrideCallback } = useTour('map')
+  
+  const tourSteps = [
+    {
+      target: 'body',
+      content: 'Welcome to DasiLari - Your Smart Travel Companion! Let me show you around Da Lat. 🌸',
+      placement: 'center',
+    },
+    {
+      target: '.nav-map',
+      content: '🗺️ MAP - Explore all attractions in Da Lat with interactive map and AI recommendations!',
+      disableBeacon: true,
+    },
+    {
+      target: '.nav-about',
+      content: '🌸 ABOUT - Learn everything about Da Lat: climate, culture, history, and travel tips!',
+      disableBeacon: true,
+    },
+    {
+      target: '.nav-survey',
+      content: '📋 SURVEY - Tell us your preferences so AI can create personalized recommendations just for you!',
+      disableBeacon: true,
+    },
+    {
+      target: '.nav-buddies',
+      content: '👥 BUDDIES - Find and connect with other travelers to explore Da Lat together!',
+      disableBeacon: true,
+    },
+    {
+      target: '.nav-itinerary',
+      content: '📅 ITINERARY - Plan your perfect Da Lat trip with AI-generated itineraries based on your mood!',
+      disableBeacon: true,
+    },
+    {
+      target: '.nav-photos',
+      content: '📸 PHOTOS - Discover the best photo spots in Da Lat for Instagram-worthy shots!',
+      disableBeacon: true,
+    },
+    {
+      target: '.ai-section',
+      content: 'Here are personalized AI recommendations based on your preferences. Click on any place to explore!',
+      disableBeacon: true,
+      placement: 'right',
+    },
+    {
+      target: '.p-4.md\\:p-6.border-b',
+      content: 'Filter attractions by category - Nature, Culture, Food, Adventure, and more!',
+      disableBeacon: true,
+      placement: 'right',
+    },
+    {
+      target: '.attraction-card:nth-child(3)',
+      content: 'Browse all attractions here. Click on any card to see details and get directions.',
+      disableBeacon: true,
+      placement: 'right',
+    },
+    {
+      target: '.leaflet-container',
+      content: 'This interactive map shows all attractions. Click on markers to explore locations visually!',
+      disableBeacon: true,
+      placement: 'center',
+    },
+    {
+      target: '[data-tour="ai-chat"]',
+      content: 'Need help? Ask our AI assistant anything about Da Lat travel! Click here to start chatting. 🤖',
+      disableBeacon: true,
+      placement: 'left',
+    },
+  ]
 
   // Reset ride options when modal closes
   useEffect(() => {
@@ -139,7 +212,32 @@ const MapPage = () => {
   ]
 
   return (
-    <div className="h-[calc(100vh-80px)] flex flex-col lg:flex-row">
+    <div className="h-[calc(100vh-80px)] flex flex-col lg:flex-row relative">
+      {/* Tour Guide */}
+      <Joyride
+        steps={tourSteps}
+        run={run}
+        continuous
+        showProgress
+        showSkipButton
+        callback={handleJoyrideCallback}
+        styles={{
+          options: {
+            primaryColor: '#ec4899',
+            zIndex: 10000,
+          },
+        }}
+      />
+      
+      {/* Guide Button */}
+      <button
+        onClick={startTour}
+        className="fixed bottom-24 right-6 z-[999] bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
+        title="Show Guide"
+      >
+        <HelpCircle className="w-6 h-6" />
+      </button>
+      
       {/* Sidebar */}
       <div className="w-full lg:w-96 bg-white shadow-2xl overflow-y-auto">
         {/* User Info */}

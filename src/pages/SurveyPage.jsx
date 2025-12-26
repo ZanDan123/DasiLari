@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User, Globe, Heart, Calendar, DollarSign, Car, Sparkles } from 'lucide-react'
+import { User, Globe, Heart, Calendar, DollarSign, Car, Sparkles, HelpCircle } from 'lucide-react'
+import Joyride from 'react-joyride'
+import { useTour } from '../hooks/useTour'
 
 const SurveyPage = () => {
   const navigate = useNavigate()
@@ -19,6 +21,17 @@ const SurveyPage = () => {
     photoInterest: false, // interested in photo spots
     findBuddies: false, // want to find travel buddies
   })
+  
+  // Tour guide
+  const { run, startTour, handleJoyrideCallback } = useTour('survey')
+  
+  const tourSteps = [
+    {
+      target: 'body',
+      content: 'Welcome to the Survey Page! Fill out this quick survey to get personalized AI recommendations for your Da Lat trip. 📝',
+      placement: 'center',
+    },
+  ]
 
   const interests = [
     { value: 'nature', label: 'Nature & Lakes', icon: '🌲' },
@@ -51,7 +64,32 @@ const SurveyPage = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 relative">
+      {/* Tour Guide */}
+      <Joyride
+        steps={tourSteps}
+        run={run}
+        continuous
+        showProgress
+        showSkipButton
+        callback={handleJoyrideCallback}
+        styles={{
+          options: {
+            primaryColor: '#ec4899',
+            zIndex: 10000,
+          },
+        }}
+      />
+      
+      {/* Guide Button */}
+      <button
+        onClick={startTour}
+        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
+        title="Show Guide"
+      >
+        <HelpCircle className="w-6 h-6" />
+      </button>
+      
       {/* Header */}
       <div className="glass-card p-6 md:p-10 text-center mb-6 md:mb-8 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-dalat-pink via-dalat-blue to-dalat-pink bg-[length:200%_100%] animate-[gradientShift_3s_linear_infinite]"></div>

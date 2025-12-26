@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { Camera, MapPin, Sunrise, Sunset, Sun, Instagram, Heart, Share2, Navigation } from 'lucide-react'
+import { Camera, MapPin, Sunrise, Sunset, Sun, Instagram, Heart, Share2, Navigation, HelpCircle } from 'lucide-react'
+import Joyride from 'react-joyride'
+import { useTour } from '../hooks/useTour'
 
 const PhotosPage = () => {
   const [userPreferences, setUserPreferences] = useState(null)
   const [selectedFilter, setSelectedFilter] = useState('all')
+  
+  // Tour guide
+  const { run, startTour, handleJoyrideCallback } = useTour('photos')
+  
+  const tourSteps = [
+    {
+      target: 'body',
+      content: 'Welcome to the Photos page! Discover the most Instagram-worthy spots in Da Lat with perfect timing and photography tips. 📸',
+      placement: 'center',
+    },
+  ]
 
   useEffect(() => {
     const prefs = JSON.parse(localStorage.getItem('userPreferences') || '{}')
@@ -153,7 +166,32 @@ const PhotosPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 p-4 md:p-8 relative">
+      {/* Tour Guide */}
+      <Joyride
+        steps={tourSteps}
+        run={run}
+        continuous
+        showProgress
+        showSkipButton
+        callback={handleJoyrideCallback}
+        styles={{
+          options: {
+            primaryColor: '#ec4899',
+            zIndex: 10000,
+          },
+        }}
+      />
+      
+      {/* Guide Button */}
+      <button
+        onClick={startTour}
+        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
+        title="Show Guide"
+      >
+        <HelpCircle className="w-6 h-6" />
+      </button>
+      
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

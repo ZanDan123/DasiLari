@@ -95,6 +95,7 @@ const AIChat = () => {
       {/* Chat Button */}
       {!isOpen && (
         <button
+          data-tour="ai-chat"
           onClick={() => setIsOpen(true)}
           className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110 flex items-center space-x-2 group"
         >
