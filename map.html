@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DasiDari - Explore Attractions</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2>🌸 DasiDari</h2>
+            <ul class="nav-menu">
+                <li><a href="map.html" class="active">Map</a></li>
+                <li><a href="about.html">About Da Lat</a></li>
+                <li><a href="index.html">Survey</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="map-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="user-info" id="userInfo">
+                <h3>Welcome, Explorer!</h3>
+                <p>Discover the best of Da Lat</p>
+            </div>
+
+            <div class="ai-suggestions">
+                <h3>🤖 AI Recommendations</h3>
+                <p class="ai-intro">Based on your preferences, here are the best places for you:</p>
+                <div id="aiRecommendations" class="recommendation-list">
+                    <div class="loading">Generating personalized recommendations...</div>
+                </div>
+            </div>
+
+            <div class="attraction-categories">
+                <h3>Filter by Category</h3>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="nature">Nature</button>
+                    <button class="filter-btn" data-category="culture">Culture</button>
+                    <button class="filter-btn" data-category="food">Food</button>
+                    <button class="filter-btn" data-category="adventure">Adventure</button>
+                    <button class="filter-btn" data-category="photography">Photography</button>
+                </div>
+            </div>
+
+            <div class="attraction-list" id="attractionList">
+                <h3>Popular Attractions</h3>
+                <div id="attractionItems"></div>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-wrapper">
+            <div id="map"></div>
+            
+            <!-- Location Details Modal -->
+            <div id="locationModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modalBody">
+                        <h2 id="modalTitle"></h2>
+                        <img id="modalImage" src="" alt="">
+                        <p id="modalDescription"></p>
+                        <div class="modal-actions">
+                            <button id="getDirections" class="btn-primary">
+                                <span>📍</span> Get Directions
+                            </button>
+                            <button id="callRide" class="btn-secondary">
+                                <span>🚗</span> Call a Ride
+                            </button>
+                        </div>
+                        <div id="directionsInfo" class="directions-info" style="display:none;"></div>
+                        <div id="rideInfo" class="ride-info" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>
