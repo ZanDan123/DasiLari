@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { MessageCircle, Send, X, Sparkles } from 'lucide-react'
+import { sendChatMessage } from '../services/api'
 
 const AIChat = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,7 +12,21 @@ const AIChat = () => {
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [myTravelList, setMyTravelList] = useState([])
+  const [myPhotoList, setMyPhotoList] = useState([])
+  const [userId, setUserId] = useState(null)
+  const [useLocalFallback, setUseLocalFallback] = useState(false)
   const messagesEndRef = useRef(null)
+
+  useEffect(() => {
+    // Load travel lists from localStorage
+    const travelList = JSON.parse(localStorage.getItem('myTravelList') || '[]')
+    const photoList = JSON.parse(localStorage.getItem('myPhotoList') || '[]')
+    const storedUserId = localStorage.getItem('userId')
+    setMyTravelList(travelList)
+    setMyPhotoList(photoList)
+    if (storedUserId) setUserId(parseInt(storedUserId))
+  }, [isOpen]) // Reload when chat opens
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -23,6 +38,84 @@ const AIChat = () => {
 
   const getAIResponse = (userMessage) => {
     const msg = userMessage.toLowerCase()
+    
+    // Check user's travel list
+    if (msg.includes('my list') || msg.includes('travel list') || msg.includes('what did i add') || msg.includes('my places')) {
+      if (myTravelList.length === 0 && myPhotoList.length === 0) {
+        return "You haven't added any places to your lists yet! 📝\n\nVisit the **Itinerary** page to add travel destinations, or the **Photos** page to add photo spots.\n\nOnce you add places, I can help you:\n- Create a custom itinerary\n- Suggest the best route\n- Find nearby restaurants\n- Book transportation"
+      }
+      
+      let response = "Here's what you've saved:\n\n"
+      
+      if (myTravelList.length > 0) {
+        response += "🗺️ **Travel List** (" + myTravelList.length + " places):\n"
+        myTravelList.forEach((place, index) => {
+          response += `${index + 1}. ${place.name}\n`
+        })
+        response += "\n"
+      }
+      
+      if (myPhotoList.length > 0) {
+        response += "📸 **Photo Spots** (" + myPhotoList.length + " locations):\n"
+        myPhotoList.forEach((spot, index) => {
+          response += `${index + 1}. ${spot.name}\n`
+        })
+        response += "\n"
+      }
+      
+      response += "Would you like me to create a custom itinerary based on these places?"
+      return response
+    }
+    
+    // Create itinerary based on travel list
+    if ((msg.includes('create') || msg.includes('make') || msg.includes('plan')) && 
+        (msg.includes('itinerary') || msg.includes('schedule') || msg.includes('route'))) {
+      
+      if (myTravelList.length === 0 && myPhotoList.length === 0) {
+        return "I'd love to create an itinerary for you! But first, please add some places to your travel list:\n\n1. Visit the **Itinerary** page\n2. Browse suggested places\n3. Click 'Add to My Travel List'\n4. Come back and I'll create a perfect route for you! 🗺️"
+      }
+      
+      const allPlaces = [...myTravelList, ...myPhotoList]
+      let response = "🎉 Great! Based on your selected places, here's my suggested itinerary:\n\n"
+      
+      // Group by time of day
+      const morningPlaces = allPlaces.filter(p => p.bestTime === 'sunrise' || p.bestTime === 'morning')
+      const afternoonPlaces = allPlaces.filter(p => p.bestTime === 'afternoon')
+      const eveningPlaces = allPlaces.filter(p => p.bestTime === 'sunset' || p.bestTime === 'evening')
+      const otherPlaces = allPlaces.filter(p => !p.bestTime)
+      
+      if (morningPlaces.length > 0) {
+        response += "**🌅 Morning:**\n"
+        morningPlaces.forEach(place => {
+          response += `- ${place.name}\n`
+        })
+        response += "\n"
+      }
+      
+      if (afternoonPlaces.length > 0 || otherPlaces.length > 0) {
+        response += "**☀️ Afternoon:**\n"
+        afternoonPlaces.concat(otherPlaces).forEach(place => {
+          response += `- ${place.name}\n`
+        })
+        response += "\n"
+      }
+      
+      if (eveningPlaces.length > 0) {
+        response += "**🌆 Evening:**\n"
+        eveningPlaces.forEach(place => {
+          response += `- ${place.name}\n`
+        })
+        response += "\n"
+      }
+      
+      response += "💡 **Tips:**\n"
+      response += "- Start early to avoid crowds\n"
+      response += "- Book transportation between locations\n"
+      response += "- Allocate 2-3 hours per location\n"
+      response += "\nWould you like me to help book rides or suggest nearby restaurants?"
+      
+      return response
+    }
     
     // Photo spot recommendations
     if (msg.includes('photo') || msg.includes('picture') || msg.includes('instagram')) {
@@ -69,14 +162,36 @@ const AIChat = () => {
 
     const userMessage = { role: 'user', content: input }
     setMessages(prev => [...prev, userMessage])
+    const currentInput = input
     setInput('')
     setIsTyping(true)
 
-    // Simulate AI typing delay
+    // Try API first if user_id exists, fallback to local
+    if (!useLocalFallback && userId) {
+      try {
+        const response = await sendChatMessage({
+          message: currentInput,
+          user_id: userId,
+        })
+        
+        const aiResponse = {
+          role: 'assistant',
+          content: response.response || response.message || getAIResponse(currentInput)
+        }
+        setMessages(prev => [...prev, aiResponse])
+        setIsTyping(false)
+        return
+      } catch (error) {
+        console.warn('API call failed, using local fallback:', error)
+        setUseLocalFallback(true)
+      }
+    }
+
+    // Local fallback (also used when no userId)
     setTimeout(() => {
       const aiResponse = {
         role: 'assistant',
-        content: getAIResponse(input)
+        content: getAIResponse(currentInput)
       }
       setMessages(prev => [...prev, aiResponse])
       setIsTyping(false)

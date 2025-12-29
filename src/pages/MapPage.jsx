@@ -5,6 +5,7 @@ import L from 'leaflet'
 import Joyride from 'react-joyride'
 import AIChat from '../components/AIChat'
 import { useTour } from '../hooks/useTour'
+import { getDestinations } from '../services/api'
 
 // Fix Leaflet default marker icons
 delete L.Icon.Default.prototype._getIconUrl
@@ -77,6 +78,7 @@ const MapPage = () => {
   const [aiRecommendations, setAiRecommendations] = useState([])
   const [userPreferences, setUserPreferences] = useState(null)
   const [showRideOptions, setShowRideOptions] = useState(false)
+  const [apiAttractions, setApiAttractions] = useState([])
   
   // Tour guide
   const { run, startTour, handleJoyrideCallback } = useTour('map')
@@ -164,11 +166,58 @@ const MapPage = () => {
       setUserPreferences(prefs)
       generateAIRecommendations(prefs)
     }
+    
+    // Fetch destinations from API
+    const fetchAttractions = async () => {
+      try {
+        const destinations = await getDestinations()
+        if (destinations && destinations.length > 0) {
+          // Transform API data to match component format
+          const transformedAttractions = destinations.map(dest => ({
+            id: dest.id,
+            name: dest.name,
+            category: getCategoryFromDestination(dest),
+            lat: dest.location?.lat || 11.9404 + Math.random() * 0.05,
+            lng: dest.location?.lng || 108.4388 + Math.random() * 0.05,
+            description: dest.description,
+            icon: getIconForCategory(dest.category),
+            estimatedCost: dest.estimated_cost,
+            estimatedTime: dest.estimated_time
+          }))
+          setApiAttractions(transformedAttractions)
+        }
+      } catch (error) {
+        console.warn('Failed to fetch destinations from API:', error)
+      }
+    }
+    
+    fetchAttractions()
   }, [])
+  
+  const getCategoryFromDestination = (dest) => {
+    if (dest.photo_spot) return 'photography'
+    if (dest.category === 'local') return 'nature'
+    if (dest.category === 'famous') return 'culture'
+    return dest.category || 'nature'
+  }
+  
+  const getIconForCategory = (category) => {
+    const iconMap = {
+      nature: '🌲',
+      culture: '🏛️',
+      food: '🍽️',
+      adventure: '🎢',
+      photography: '📷',
+      local: '🌲',
+      famous: '🏛️'
+    }
+    return iconMap[category] || '🌟'
+  }
 
   const generateAIRecommendations = (prefs) => {
     // Simulate AI recommendations based on user preferences
-    const recommended = attractions
+    const allAttractions = apiAttractions.length > 0 ? apiAttractions : attractions
+    const recommended = allAttractions
       .filter(attr => {
         if (!prefs.interests) return true
         return prefs.interests.some(interest => 
@@ -189,9 +238,12 @@ const MapPage = () => {
     { id: 'photography', name: 'Photography', icon: '📷' },
   ]
 
+  // Use API data if available, otherwise use default attractions
+  const allAttractions = apiAttractions.length > 0 ? apiAttractions : attractions
+
   const filteredAttractions = filterCategory === 'all'
-    ? attractions
-    : attractions.filter(a => a.category === filterCategory)
+    ? allAttractions
+    : allAttractions.filter(a => a.category === filterCategory)
 
   const getDirections = (attraction) => {
     window.open(

@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User, Globe, Heart, Calendar, DollarSign, Car, Sparkles, HelpCircle } from 'lucide-react'
+import { User, Globe, Heart, Calendar, DollarSign, Car, Sparkles, HelpCircle, Loader2 } from 'lucide-react'
 import Joyride from 'react-joyride'
 import { useTour } from '../hooks/useTour'
+import { saveSurvey } from '../services/api'
 
 const SurveyPage = () => {
   const navigate = useNavigate()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState(null)
   const [formData, setFormData] = useState({
     name: '',
     country: '',
@@ -51,12 +54,37 @@ const SurveyPage = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Save to localStorage
-    localStorage.setItem('dalatSurvey', JSON.stringify(formData))
-    // Navigate to map
-    navigate('/')
+    setIsSubmitting(true)
+    setError(null)
+    
+    try {
+      // Call backend API to save survey
+      const result = await saveSurvey(formData)
+      
+      // Save to localStorage with user_id from API
+      const dataToStore = {
+        ...formData,
+        user_id: result.user_id
+      }
+      localStorage.setItem('userPreferences', JSON.stringify(dataToStore))
+      localStorage.setItem('dalatSurvey', JSON.stringify(dataToStore))
+      localStorage.setItem('userId', result.user_id)
+      
+      // Navigate to itinerary page to see recommendations
+      navigate('/itinerary')
+    } catch (err) {
+      console.error('Error saving survey:', err)
+      setError(err.message || 'Failed to save survey. Please try again.')
+      
+      // Fallback: save locally and continue
+      localStorage.setItem('userPreferences', JSON.stringify(formData))
+      localStorage.setItem('dalatSurvey', JSON.stringify(formData))
+      navigate('/itinerary')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const skipSurvey = () => {
@@ -499,14 +527,31 @@ const SurveyPage = () => {
             </label>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
+              {error}
+            </div>
+          )}
+
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full dalat-button text-base md:text-lg py-4 relative overflow-hidden group"
+            disabled={isSubmitting}
+            className="w-full dalat-button text-base md:text-lg py-4 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span className="relative z-10 flex items-center justify-center space-x-2">
-              <Sparkles className="w-5 h-5" />
-              <span>Start Exploring Da Lat</span>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <span>Saving...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-5 h-5" />
+                  <span>Start Exploring Da Lat</span>
+                </>
+              )}
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
           </button>

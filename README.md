@@ -59,19 +59,60 @@ When selecting an attraction, users get two options:
 
 ## Technology Stack 💻
 
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with:
-  - CSS Grid & Flexbox
-  - Animations
-  - Responsive design
-  - Custom properties (CSS variables)
-- **JavaScript (ES6+)**: 
-  - Interactive functionality
-  - LocalStorage for data persistence
-  - AI recommendation algorithm
-  - Map integration
+- **React 18**: Modern UI framework with hooks
+- **Vite**: Fast build tool and development server
+- **Tailwind CSS**: Utility-first CSS framework
 - **Leaflet.js**: Open-source mapping library
-- **OpenStreetMap**: Free map data
+- **React Router**: Client-side routing
+- **Joyride**: Guided tours for onboarding
+
+### Backend Integration 🔌
+
+This frontend connects to the **DasiLari Backend API** (FastAPI):
+
+| Feature | API Endpoint | Method |
+|---------|-------------|--------|
+| Survey | `/api/survey` | POST |
+| User Profile | `/api/users/{id}` | GET |
+| Destinations | `/api/destinations` | GET |
+| Photo Spots | `/api/destinations/photo-spots` | GET |
+| AI Chat | `/api/chat` | POST |
+| Generate Itinerary | `/api/itineraries/generate` | POST |
+
+## How to Run 🚀
+
+### Prerequisites
+- Node.js 18+
+- Backend API running on port 8000
+
+### Development Setup
+
+1. **Start the Backend first**:
+```bash
+cd DasiLari_BE
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+2. **Start the Frontend**:
+```bash
+cd DasiLasi_FE
+npm install
+npm run dev
+```
+
+3. Open http://localhost:3000 in your browser
+
+### Environment Variables
+
+Create a `.env` file (optional):
+```env
+# Leave empty to use Vite proxy (recommended for development)
+VITE_API_URL=
+
+# For production:
+# VITE_API_URL=https://your-api-domain.com
+```
 
 ## File Structure 📁
 
