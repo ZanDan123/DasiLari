@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Users, MapPin, Heart, MessageCircle, HelpCircle, Bell, X, Send, UserPlus, Check, Car, UsersIcon } from 'lucide-react'
 import Joyride from 'react-joyride'
 import { useTour } from '../hooks/useTour'
@@ -280,12 +281,12 @@ const BuddiesPage = () => {
             <p className="text-gray-600 mb-6">
               Complete the survey and enable "Find Travel Buddies" to connect with other travelers!
             </p>
-            <a
-              href="/survey"
+            <Link
+              to="/survey"
               className="inline-block px-8 py-3 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white font-semibold rounded-full hover:shadow-lg transition-all"
             >
               Take Survey
-            </a>
+            </Link>
           </div>
         </div>
       </div>
