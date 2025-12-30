@@ -10,7 +10,7 @@
 
 @layer components {
   .dalat-gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #2d7a3a 0%, #4a9c56 50%, #f7d547 100%);
     background-attachment: fixed;
   }
   
@@ -19,7 +19,7 @@
   }
   
   .dalat-button {
-    @apply bg-gradient-to-r from-dalat-pink to-dalat-blue text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 hover:shadow-dalat-hover hover:-translate-y-1;
+    @apply bg-gradient-to-r from-dalat-green to-dalat-yellow text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 hover:shadow-dalat-hover hover:-translate-y-1;
   }
   
   .tour-highlight {
@@ -42,11 +42,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-dalat-pink rounded-full;
+  @apply bg-dalat-green rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-dalat-purple;
+  @apply bg-dalat-green-dark;
 }
 
 /* Custom Animations */

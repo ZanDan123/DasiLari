@@ -276,14 +276,14 @@ const BuddiesPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 p-4 md:p-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl shadow-2xl p-8 text-center">
-            <Users className="w-24 h-24 mx-auto text-dalat-pink mb-4" />
+            <Users className="w-24 h-24 mx-auto text-dalat-green mb-4" />
             <h2 className="text-3xl font-bold mb-4">Find Travel Buddies</h2>
             <p className="text-gray-600 mb-6">
               Complete the survey and enable "Find Travel Buddies" to connect with other travelers!
             </p>
             <Link
               to="/survey"
-              className="inline-block px-8 py-3 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white font-semibold rounded-full hover:shadow-lg transition-all"
+              className="inline-block px-8 py-3 bg-gradient-to-r from-dalat-green to-dalat-yellow text-white font-semibold rounded-full hover:shadow-lg transition-all"
             >
               Take Survey
             </Link>
@@ -305,7 +305,7 @@ const BuddiesPage = () => {
         callback={handleJoyrideCallback}
         styles={{
           options: {
-            primaryColor: '#ec4899',
+            primaryColor: '#2d7a3a',
             zIndex: 1000,
           },
         }}
@@ -314,7 +314,7 @@ const BuddiesPage = () => {
       {/* Guide Button */}
       <button
         onClick={startTour}
-        className="fixed bottom-24 right-8 bg-dalat-pink text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all z-50 group"
+        className="fixed bottom-24 right-8 bg-dalat-green text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all z-50 group"
       >
         <HelpCircle className="w-6 h-6" />
         <span className="absolute right-16 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
@@ -328,7 +328,7 @@ const BuddiesPage = () => {
           onClick={() => setShowNotifications(!showNotifications)}
           className="relative bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
         >
-          <Bell className="w-6 h-6 text-dalat-pink" />
+          <Bell className="w-6 h-6 text-dalat-green" />
           {notifications.filter(n => n.status === 'pending').length > 0 && (
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {notifications.filter(n => n.status === 'pending').length}
@@ -396,7 +396,7 @@ const BuddiesPage = () => {
 
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-dalat-pink to-dalat-blue bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-dalat-green to-dalat-yellow bg-clip-text text-transparent">
           Find Your Travel Buddies
         </h1>
         <p className="text-center text-gray-600 mb-6">
@@ -407,7 +407,7 @@ const BuddiesPage = () => {
         <div className="flex flex-wrap gap-4 justify-center mb-8">
           <button
             onClick={() => setShowCreateGroup(true)}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:shadow-lg transition-all flex items-center gap-2"
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-green-500 text-white rounded-full hover:shadow-lg transition-all flex items-center gap-2"
           >
             <UserPlus className="w-5 h-5" />
             Create Group
@@ -419,7 +419,7 @@ const BuddiesPage = () => {
       {groups.length > 0 && (
         <div className="max-w-7xl mx-auto mb-12">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <UsersIcon className="w-6 h-6 text-dalat-pink" />
+            <UsersIcon className="w-6 h-6 text-dalat-green" />
             Your Groups
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -437,7 +437,7 @@ const BuddiesPage = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={() => openGroupChat(group)}
-                    className="flex-1 px-4 py-2 bg-dalat-blue text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-2 bg-dalat-yellow text-white rounded-lg hover:bg-yellow-600 transition-colors flex items-center justify-center gap-2"
                   >
                     <MessageCircle className="w-4 h-4" />
                     Chat
@@ -478,7 +478,7 @@ const BuddiesPage = () => {
                     {match.country}
                   </p>
                 </div>
-                <div className="bg-gradient-to-r from-dalat-pink to-dalat-blue text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-gradient-to-r from-dalat-green to-dalat-yellow text-white px-3 py-1 rounded-full text-sm font-semibold">
                   {match.matchScore}%
                 </div>
               </div>
@@ -526,14 +526,14 @@ const BuddiesPage = () => {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => sendTagAlongRequest(match)}
-                  className="px-4 py-2 bg-gradient-to-r from-dalat-pink to-pink-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium flex items-center justify-center gap-2"
+                  className="px-4 py-2 bg-gradient-to-r from-dalat-green to-green-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium flex items-center justify-center gap-2"
                 >
                   <Heart className="w-4 h-4" />
                   Tag Along
                 </button>
                 <button
                   onClick={() => openChat(match)}
-                  className="px-4 py-2 bg-gradient-to-r from-dalat-blue to-blue-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium flex items-center justify-center gap-2"
+                  className="px-4 py-2 bg-gradient-to-r from-dalat-yellow to-yellow-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4" />
                   Chat
@@ -553,7 +553,7 @@ const BuddiesPage = () => {
                         setSelectedMembers(selectedMembers.filter(m => m.id !== match.id))
                       }
                     }}
-                    className="w-4 h-4 text-dalat-pink rounded"
+                    className="w-4 h-4 text-dalat-green rounded"
                   />
                   <span className="text-sm text-gray-600">Select for group</span>
                 </label>
@@ -603,7 +603,7 @@ const BuddiesPage = () => {
                 <button
                   onClick={createGroup}
                   disabled={selectedMembers.length < 2}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-green-500 text-white rounded-full hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                 >
                   Create Group
                 </button>
@@ -643,7 +643,7 @@ const BuddiesPage = () => {
                     <div
                       className={`max-w-[70%] rounded-2xl px-4 py-2 ${
                         msg.from === userPreferences.name
-                          ? 'bg-gradient-to-r from-dalat-pink to-pink-500 text-white'
+                          ? 'bg-gradient-to-r from-dalat-green to-green-500 text-white'
                           : msg.from === 'System'
                           ? 'bg-gray-100 text-gray-600 text-center w-full'
                           : 'bg-gray-100 text-gray-800'
@@ -676,11 +676,11 @@ const BuddiesPage = () => {
                   onChange={(e) => setMessageInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Type a message..."
-                  className="flex-1 px-4 py-3 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-dalat-pink"
+                  className="flex-1 px-4 py-3 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-dalat-green"
                 />
                 <button
                   onClick={sendMessage}
-                  className="px-6 py-3 bg-gradient-to-r from-dalat-pink to-pink-500 text-white rounded-full hover:shadow-lg transition-all"
+                  className="px-6 py-3 bg-gradient-to-r from-dalat-green to-green-500 text-white rounded-full hover:shadow-lg transition-all"
                 >
                   <Send className="w-5 h-5" />
                 </button>
@@ -723,7 +723,7 @@ const BuddiesPage = () => {
                   <Car className="w-5 h-5" />
                   <p className="font-semibold">Vehicle Info</p>
                 </div>
-                <p className="text-sm text-blue-600">
+                <p className="text-sm text-yellow-600">
                   A suitable vehicle for {selectedGroup.members.length} passengers will be arranged.
                 </p>
               </div>

@@ -398,14 +398,14 @@ const ItineraryPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 p-4 md:p-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl shadow-2xl p-8 text-center">
-            <Calendar className="w-24 h-24 mx-auto text-dalat-pink mb-4" />
+            <Calendar className="w-24 h-24 mx-auto text-dalat-green mb-4" />
             <h2 className="text-3xl font-bold mb-4">Your Personalized Itinerary</h2>
             <p className="text-gray-600 mb-6">
               Complete the survey to get a mood-based itinerary and place recommendations tailored just for you!
             </p>
             <Link
               to="/survey"
-              className="inline-block px-8 py-3 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white font-semibold rounded-full hover:shadow-lg transition-all"
+              className="inline-block px-8 py-3 bg-gradient-to-r from-dalat-green to-dalat-yellow text-white font-semibold rounded-full hover:shadow-lg transition-all"
             >
               Take Survey
             </Link>
@@ -427,7 +427,7 @@ const ItineraryPage = () => {
         callback={handleJoyrideCallback}
         styles={{
           options: {
-            primaryColor: '#ec4899',
+            primaryColor: '#2d7a3a',
             zIndex: 10000,
           },
         }}
@@ -436,7 +436,7 @@ const ItineraryPage = () => {
       {/* Guide Button */}
       <button
         onClick={startTour}
-        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
+        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
         title="Show Guide"
       >
         <HelpCircle className="w-6 h-6" />
@@ -445,7 +445,7 @@ const ItineraryPage = () => {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-dalat-pink to-dalat-blue bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-dalat-green to-dalat-yellow bg-clip-text text-transparent">
             📅 Your Travel Recommendations
           </h1>
           {userPreferences.currentMood && userPreferences.duration ? (
@@ -489,7 +489,7 @@ const ItineraryPage = () => {
                       <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                       <span className="font-bold text-sm">{place.rating}</span>
                     </div>
-                    <div className="absolute top-3 left-3 bg-dalat-pink/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                    <div className="absolute top-3 left-3 bg-dalat-green/90 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-white text-sm font-semibold capitalize">{place.category}</span>
                     </div>
                   </div>
@@ -497,7 +497,7 @@ const ItineraryPage = () => {
                   {/* Place Info */}
                   <div className="p-5">
                     <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                      <MapPin className="w-5 h-5 text-dalat-pink" />
+                      <MapPin className="w-5 h-5 text-dalat-green" />
                       {place.name}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-3">
@@ -511,7 +511,7 @@ const ItineraryPage = () => {
                       className={`w-full py-3 px-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 ${
                         myTravelList.find(p => p.id === place.id)
                           ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                          : 'bg-gradient-to-r from-dalat-pink to-dalat-blue text-white hover:shadow-lg hover:scale-105'
+                          : 'bg-gradient-to-r from-dalat-green to-dalat-yellow text-white hover:shadow-lg hover:scale-105'
                       }`}
                     >
                       <Plus className="w-5 h-5" />
@@ -547,7 +547,7 @@ const ItineraryPage = () => {
                 <button
                   onClick={generateAIItinerary}
                   disabled={isGenerating}
-                  className="w-full py-4 px-6 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white font-bold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-4 px-6 bg-gradient-to-r from-dalat-green to-dalat-yellow text-white font-bold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {isGenerating ? (
                     <>
@@ -573,7 +573,7 @@ const ItineraryPage = () => {
             <div key={day.day} className="bg-white rounded-3xl shadow-lg p-6 md:p-8">
               {/* Day Header */}
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-dalat-pink to-dalat-blue text-white w-16 h-16 rounded-full flex items-center justify-center font-bold text-xl mr-4">
+                <div className="bg-gradient-to-r from-dalat-green to-dalat-yellow text-white w-16 h-16 rounded-full flex items-center justify-center font-bold text-xl mr-4">
                   {day.day}
                 </div>
                 <div>
@@ -585,18 +585,18 @@ const ItineraryPage = () => {
               {/* Activities Timeline */}
               <div className="space-y-6 relative pl-8">
                 {/* Timeline Line */}
-                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-dalat-pink to-dalat-blue"></div>
+                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-dalat-green to-dalat-yellow"></div>
 
                 {day.activities.map((activity, index) => (
                   <div key={index} className="relative">
                     {/* Timeline Dot */}
-                    <div className="absolute -left-[1.875rem] top-6 w-4 h-4 bg-white border-4 border-dalat-pink rounded-full z-10"></div>
+                    <div className="absolute -left-[1.875rem] top-6 w-4 h-4 bg-white border-4 border-dalat-green rounded-full z-10"></div>
 
                     {/* Activity Card */}
                     <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 hover:shadow-xl transition-all">
                       {/* Time Badge */}
                       <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center space-x-2 text-dalat-blue font-semibold capitalize">
+                        <div className="flex items-center space-x-2 text-dalat-yellow font-semibold capitalize">
                           {getTimeIcon(activity.time)}
                           <span>{activity.time}</span>
                         </div>
@@ -611,7 +611,7 @@ const ItineraryPage = () => {
                         <span className="text-4xl">{activity.icon}</span>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-1 flex items-center">
-                            <MapPin className="w-5 h-5 mr-2 text-dalat-pink" />
+                            <MapPin className="w-5 h-5 mr-2 text-dalat-green" />
                             {activity.name}
                           </h3>
                           <p className="text-gray-600">{activity.activity}</p>
@@ -620,10 +620,10 @@ const ItineraryPage = () => {
 
                       {/* Actions */}
                       <div className="mt-4 flex gap-3">
-                        <button className="flex-1 bg-white hover:bg-dalat-pink hover:text-white px-4 py-2 rounded-lg font-semibold transition-all border-2 border-dalat-pink text-dalat-pink">
+                        <button className="flex-1 bg-white hover:bg-dalat-green hover:text-white px-4 py-2 rounded-lg font-semibold transition-all border-2 border-dalat-green text-dalat-green">
                           Get Directions
                         </button>
-                        <button className="flex-1 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        <button className="flex-1 bg-gradient-to-r from-dalat-green to-dalat-yellow text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
                           Book Ride
                         </button>
                       </div>

@@ -274,7 +274,7 @@ const PhotosPage = () => {
         callback={handleJoyrideCallback}
         styles={{
           options: {
-            primaryColor: '#ec4899',
+            primaryColor: '#2d7a3a',
             zIndex: 10000,
           },
         }}
@@ -283,7 +283,7 @@ const PhotosPage = () => {
       {/* Guide Button */}
       <button
         onClick={startTour}
-        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
+        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
         title="Show Guide"
       >
         <HelpCircle className="w-6 h-6" />
@@ -292,7 +292,7 @@ const PhotosPage = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-dalat-pink to-dalat-blue bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-dalat-green to-dalat-yellow bg-clip-text text-transparent">
             📸 Photo-Perfect Locations
           </h1>
           <p className="text-gray-600 text-lg flex items-center justify-center">
@@ -306,7 +306,7 @@ const PhotosPage = () => {
           <div className="mb-12">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-bold mb-2 flex items-center justify-center gap-2">
-                <Camera className="w-8 h-8 text-dalat-pink" />
+                <Camera className="w-8 h-8 text-dalat-green" />
                 Recommended for You
               </h2>
               <p className="text-gray-600">
@@ -333,7 +333,7 @@ const PhotosPage = () => {
                       <Heart className="w-4 h-4 text-red-500 fill-red-500" />
                       <span className="font-bold text-sm">{spot.instagrammability}%</span>
                     </div>
-                    <div className="absolute top-4 left-4 bg-dalat-pink/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 bg-dalat-green/90 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-white text-xs font-semibold">RECOMMENDED</span>
                     </div>
                     <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center space-x-1 capitalize">
@@ -377,7 +377,7 @@ const PhotosPage = () => {
                       className={`w-full py-3 px-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 ${
                         myPhotoList.find(p => p.id === spot.id)
                           ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                          : 'bg-gradient-to-r from-dalat-pink to-dalat-blue text-white hover:shadow-lg hover:scale-105'
+                          : 'bg-gradient-to-r from-dalat-green to-dalat-yellow text-white hover:shadow-lg hover:scale-105'
                       }`}
                     >
                       <Plus className="w-5 h-5" />
@@ -423,8 +423,8 @@ const PhotosPage = () => {
               onClick={() => setSelectedFilter(filter.id)}
               className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
                 selectedFilter === filter.id
-                  ? 'bg-gradient-to-r from-dalat-pink to-dalat-blue text-white shadow-lg scale-105'
-                  : 'bg-white text-gray-700 hover:bg-dalat-pink/10'
+                  ? 'bg-gradient-to-r from-dalat-green to-dalat-yellow text-white shadow-lg scale-105'
+                  : 'bg-white text-gray-700 hover:bg-dalat-green/10'
               }`}
             >
               <span className="mr-1">{filter.icon}</span>
@@ -487,13 +487,13 @@ const PhotosPage = () => {
 
                 {/* Actions */}
                 <div className="grid grid-cols-3 gap-2">
-                  <button className="flex items-center justify-center px-3 py-2 bg-gray-100 hover:bg-dalat-pink hover:text-white rounded-xl transition-all">
+                  <button className="flex items-center justify-center px-3 py-2 bg-gray-100 hover:bg-dalat-green hover:text-white rounded-xl transition-all">
                     <Navigation className="w-4 h-4" />
                   </button>
-                  <button className="flex items-center justify-center px-3 py-2 bg-gray-100 hover:bg-dalat-pink hover:text-white rounded-xl transition-all">
+                  <button className="flex items-center justify-center px-3 py-2 bg-gray-100 hover:bg-dalat-green hover:text-white rounded-xl transition-all">
                     <Share2 className="w-4 h-4" />
                   </button>
-                  <button className="col-span-1 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white py-2 rounded-xl font-semibold hover:shadow-lg transition-all text-sm">
+                  <button className="col-span-1 bg-gradient-to-r from-dalat-green to-dalat-yellow text-white py-2 rounded-xl font-semibold hover:shadow-lg transition-all text-sm">
                     Visit
                   </button>
                 </div>
@@ -503,32 +503,32 @@ const PhotosPage = () => {
         </div>
 
         {/* Photography Tips */}
-        <div className="mt-12 bg-gradient-to-r from-dalat-pink/10 to-dalat-blue/10 rounded-3xl p-8">
+        <div className="mt-12 bg-gradient-to-r from-dalat-green/10 to-dalat-yellow/10 rounded-3xl p-8">
           <h3 className="text-2xl font-bold mb-6 flex items-center">
-            <Camera className="w-8 h-8 mr-3 text-dalat-pink" />
+            <Camera className="w-8 h-8 mr-3 text-dalat-green" />
             Pro Photography Tips
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white rounded-2xl p-6">
-              <h4 className="font-bold mb-2 text-dalat-pink">🌅 Golden Hour Magic</h4>
+              <h4 className="font-bold mb-2 text-dalat-green">🌅 Golden Hour Magic</h4>
               <p className="text-gray-600 text-sm">
                 Best lighting occurs 1 hour after sunrise and 1 hour before sunset. Plan your photo shoots accordingly!
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6">
-              <h4 className="font-bold mb-2 text-dalat-pink">📱 Mobile Photography</h4>
+              <h4 className="font-bold mb-2 text-dalat-green">📱 Mobile Photography</h4>
               <p className="text-gray-600 text-sm">
                 Use portrait mode for depth, HDR for landscapes, and clean your lens before shooting!
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6">
-              <h4 className="font-bold mb-2 text-dalat-pink">👥 Avoid Crowds</h4>
+              <h4 className="font-bold mb-2 text-dalat-green">👥 Avoid Crowds</h4>
               <p className="text-gray-600 text-sm">
                 Visit popular spots early morning (before 8 AM) or late afternoon to get cleaner shots.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6">
-              <h4 className="font-bold mb-2 text-dalat-pink">🎨 Composition Tips</h4>
+              <h4 className="font-bold mb-2 text-dalat-green">🎨 Composition Tips</h4>
               <p className="text-gray-600 text-sm">
                 Use the rule of thirds, look for leading lines, and frame your subject with natural elements!
               </p>

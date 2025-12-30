@@ -212,7 +212,7 @@ const AIChat = () => {
         <button
           data-tour="ai-chat"
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110 flex items-center space-x-2 group"
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110 flex items-center space-x-2 group"
         >
           <MessageCircle className="w-6 h-6" />
           <Sparkles className="w-4 h-4 animate-pulse" />
@@ -224,7 +224,7 @@ const AIChat = () => {
       {isOpen && (
         <div className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-3rem)] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Sparkles className="w-6 h-6" />
               <div>
@@ -250,7 +250,7 @@ const AIChat = () => {
                 <div
                   className={`max-w-[80%] p-3 rounded-2xl whitespace-pre-line ${
                     message.role === 'user'
-                      ? 'bg-gradient-to-r from-dalat-pink to-dalat-blue text-white'
+                      ? 'bg-gradient-to-r from-dalat-green to-dalat-yellow text-white'
                       : 'bg-white shadow-md'
                   }`}
                 >
@@ -263,9 +263,9 @@ const AIChat = () => {
               <div className="flex justify-start">
                 <div className="bg-white shadow-md p-3 rounded-2xl">
                   <div className="flex space-x-2">
-                    <div className="w-2 h-2 bg-dalat-pink rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-dalat-pink rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-dalat-pink rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-dalat-green rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-dalat-green rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-dalat-green rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                 </div>
               </div>
@@ -282,12 +282,12 @@ const AIChat = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask me anything..."
-                className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-dalat-pink focus:ring-4 focus:ring-dalat-pink/20 outline-none transition-all"
+                className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-dalat-green focus:ring-4 focus:ring-dalat-green/20 outline-none transition-all"
               />
               <button
                 onClick={handleSend}
                 disabled={!input.trim()}
-                className="bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-3 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-3 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" />
               </button>

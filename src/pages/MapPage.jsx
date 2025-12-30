@@ -275,7 +275,7 @@ const MapPage = () => {
         callback={handleJoyrideCallback}
         styles={{
           options: {
-            primaryColor: '#ec4899',
+            primaryColor: '#2d7a3a',
             zIndex: 10000,
           },
         }}
@@ -284,7 +284,7 @@ const MapPage = () => {
       {/* Guide Button */}
       <button
         onClick={startTour}
-        className="fixed bottom-24 right-6 z-[999] bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
+        className="fixed bottom-24 right-6 z-[999] bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
         title="Show Guide"
       >
         <HelpCircle className="w-6 h-6" />
@@ -294,7 +294,7 @@ const MapPage = () => {
       <div className="w-full lg:w-96 bg-white shadow-2xl overflow-y-auto">
         {/* User Info */}
         {userPreferences && (
-          <div className="bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 md:p-6">
+          <div className="bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-4 md:p-6">
             <h3 className="text-lg md:text-xl font-bold mb-2">
               Welcome, {userPreferences.name}! 👋
             </h3>
@@ -306,10 +306,10 @@ const MapPage = () => {
 
         {/* AI Recommendations */}
         {aiRecommendations.length > 0 && (
-          <div className="ai-section p-4 md:p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-b-2 border-dalat-pink/20">
+          <div className="ai-section p-4 md:p-6 bg-gradient-to-br from-green-50 to-green-50 border-b-2 border-dalat-green/20">
             <div className="flex items-center space-x-2 mb-4">
-              <Sparkles className="w-6 h-6 text-dalat-purple" />
-              <h3 className="text-lg md:text-xl font-bold text-dalat-purple">
+              <Sparkles className="w-6 h-6 text-dalat-green-dark" />
+              <h3 className="text-lg md:text-xl font-bold text-dalat-green-dark">
                 AI Recommendations for You
               </h3>
             </div>
@@ -321,12 +321,12 @@ const MapPage = () => {
                 <div
                   key={rec.id}
                   onClick={() => setSelectedAttraction(rec)}
-                  className="p-3 md:p-4 bg-white rounded-xl border-l-4 border-dalat-pink cursor-pointer hover:shadow-lg transition-all duration-300 hover:translate-x-2"
+                  className="p-3 md:p-4 bg-white rounded-xl border-l-4 border-dalat-green cursor-pointer hover:shadow-lg transition-all duration-300 hover:translate-x-2"
                 >
                   <div className="flex items-start space-x-3">
                     <span className="text-2xl md:text-3xl">{rec.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-dalat-purple text-sm md:text-base truncate">
+                      <h4 className="font-bold text-dalat-green-dark text-sm md:text-base truncate">
                         {rec.name}
                       </h4>
                       <p className="text-xs md:text-sm text-gray-600 line-clamp-2">
@@ -350,8 +350,8 @@ const MapPage = () => {
                 onClick={() => setFilterCategory(cat.id)}
                 className={`px-3 md:px-4 py-2 rounded-full font-semibold transition-all duration-300 text-sm md:text-base ${
                   filterCategory === cat.id
-                    ? 'bg-gradient-to-r from-dalat-pink to-dalat-blue text-white shadow-lg'
-                    : 'bg-gray-100 hover:bg-dalat-pink/20'
+                    ? 'bg-gradient-to-r from-dalat-green to-dalat-yellow text-white shadow-lg'
+                    : 'bg-gray-100 hover:bg-dalat-green/20'
                 }`}
               >
                 <span className="mr-1">{cat.icon}</span>
@@ -425,7 +425,7 @@ const MapPage = () => {
             <div className="glass-card max-w-md w-full p-4 md:p-6 max-h-[90vh] overflow-y-auto">
               <div className="text-center mb-6">
                 <span className="text-5xl md:text-6xl">{selectedAttraction.icon}</span>
-                <h2 className="text-xl md:text-2xl font-bold mt-4 bg-gradient-to-r from-dalat-pink to-dalat-blue bg-clip-text text-transparent">
+                <h2 className="text-xl md:text-2xl font-bold mt-4 bg-gradient-to-r from-dalat-green to-dalat-yellow bg-clip-text text-transparent">
                   {selectedAttraction.name}
                 </h2>
                 <p className="text-sm md:text-base text-gray-600 mt-2">

@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { LanguageProvider } from './contexts/LanguageContext'
 import Layout from './components/Layout'
 import MapPage from './pages/MapPage'
 import AboutPage from './pages/AboutPage'
@@ -10,8 +11,9 @@ import PhotosPage from './pages/PhotosPage'
 
 function App() {
   return (
-    <Router>
-      <Layout>
+    <LanguageProvider>
+      <Router>
+        <Layout>
         <Routes>
           <Route path="/" element={<MapPage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -22,6 +24,7 @@ function App() {
         </Routes>
       </Layout>
     </Router>
+    </LanguageProvider>
   )
 }
 

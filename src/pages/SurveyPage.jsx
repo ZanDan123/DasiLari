@@ -103,7 +103,7 @@ const SurveyPage = () => {
         callback={handleJoyrideCallback}
         styles={{
           options: {
-            primaryColor: '#ec4899',
+            primaryColor: '#2d7a3a',
             zIndex: 10000,
           },
         }}
@@ -112,7 +112,7 @@ const SurveyPage = () => {
       {/* Guide Button */}
       <button
         onClick={startTour}
-        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-pink to-dalat-blue text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
+        className="fixed bottom-6 right-6 z-[999] bg-gradient-to-r from-dalat-green to-dalat-yellow text-white p-4 rounded-full shadow-2xl hover:shadow-dalat-hover transition-all duration-300 hover:scale-110"
         title="Show Guide"
       >
         <HelpCircle className="w-6 h-6" />
@@ -120,11 +120,11 @@ const SurveyPage = () => {
       
       {/* Header */}
       <div className="glass-card p-6 md:p-10 text-center mb-6 md:mb-8 relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-dalat-pink via-dalat-blue to-dalat-pink bg-[length:200%_100%] animate-[gradientShift_3s_linear_infinite]"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-dalat-green via-dalat-yellow to-dalat-green bg-[length:200%_100%] animate-[gradientShift_3s_linear_infinite]"></div>
         <div className="flex justify-center mb-4">
-          <Sparkles className="w-12 h-12 md:w-16 md:h-16 text-dalat-pink" />
+          <Sparkles className="w-12 h-12 md:w-16 md:h-16 text-dalat-green" />
         </div>
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-dalat-pink to-dalat-blue bg-clip-text text-transparent mb-4">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-dalat-green to-dalat-yellow bg-clip-text text-transparent mb-4">
           DasiLari Travel Survey
         </h1>
         <p className="text-base md:text-xl text-gray-600 font-medium">
@@ -138,7 +138,7 @@ const SurveyPage = () => {
           {/* Name */}
           <div>
             <label className="flex items-center space-x-2 font-bold text-gray-800 mb-3 text-sm md:text-base">
-              <User className="w-5 h-5 text-dalat-pink" />
+              <User className="w-5 h-5 text-dalat-green" />
               <span>What's your name?</span>
             </label>
             <input
@@ -146,7 +146,7 @@ const SurveyPage = () => {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
-              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-pink focus:ring-4 focus:ring-dalat-pink/20 outline-none transition-all duration-300 bg-white/90 text-sm md:text-base"
+              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-green focus:ring-4 focus:ring-dalat-green/20 outline-none transition-all duration-300 bg-white/90 text-sm md:text-base"
               placeholder="Enter your name..."
             />
           </div>
@@ -154,7 +154,7 @@ const SurveyPage = () => {
           {/* Country */}
           <div>
             <label className="flex items-center space-x-2 font-bold text-gray-800 mb-3 text-sm md:text-base">
-              <Globe className="w-5 h-5 text-dalat-pink" />
+              <Globe className="w-5 h-5 text-dalat-green" />
               <span>Which country are you from?</span>
             </label>
             <input
@@ -162,7 +162,7 @@ const SurveyPage = () => {
               value={formData.country}
               onChange={(e) => setFormData({ ...formData, country: e.target.value })}
               required
-              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-pink focus:ring-4 focus:ring-dalat-pink/20 outline-none transition-all duration-300 bg-white/90 text-sm md:text-base"
+              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-green focus:ring-4 focus:ring-dalat-green/20 outline-none transition-all duration-300 bg-white/90 text-sm md:text-base"
               placeholder="E.g.: Vietnam, USA, Korea..."
             />
           </div>
@@ -170,7 +170,7 @@ const SurveyPage = () => {
           {/* Interests */}
           <div>
             <label className="flex items-center space-x-2 font-bold text-gray-800 mb-4 text-sm md:text-base">
-              <Heart className="w-5 h-5 text-dalat-pink" />
+              <Heart className="w-5 h-5 text-dalat-green" />
               <span>What types of attractions interest you most?</span>
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -179,15 +179,15 @@ const SurveyPage = () => {
                   key={interest.value}
                   className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                     formData.interests.includes(interest.value)
-                      ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                      : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                      ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                      : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
                   }`}
                 >
                   <input
                     type="checkbox"
                     checked={formData.interests.includes(interest.value)}
                     onChange={() => handleInterestChange(interest.value)}
-                    className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                    className="w-5 h-5 accent-dalat-green cursor-pointer"
                   />
                   <span className="text-xl md:text-2xl">{interest.icon}</span>
                   <span className="font-medium text-gray-800 text-sm md:text-base">{interest.label}</span>
@@ -199,14 +199,14 @@ const SurveyPage = () => {
           {/* Duration */}
           <div>
             <label className="flex items-center space-x-2 font-bold text-gray-800 mb-3 text-sm md:text-base">
-              <Calendar className="w-5 h-5 text-dalat-pink" />
+              <Calendar className="w-5 h-5 text-dalat-green" />
               <span>How many days will you stay in Da Lat?</span>
             </label>
             <select
               value={formData.duration}
               onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
               required
-              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-pink focus:ring-4 focus:ring-dalat-pink/20 outline-none transition-all duration-300 bg-white/90 cursor-pointer text-sm md:text-base"
+              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-green focus:ring-4 focus:ring-dalat-green/20 outline-none transition-all duration-300 bg-white/90 cursor-pointer text-sm md:text-base"
             >
               <option value="">Select duration</option>
               <option value="1">1 day</option>
@@ -220,14 +220,14 @@ const SurveyPage = () => {
           {/* Budget */}
           <div>
             <label className="flex items-center space-x-2 font-bold text-gray-800 mb-3 text-sm md:text-base">
-              <DollarSign className="w-5 h-5 text-dalat-pink" />
+              <DollarSign className="w-5 h-5 text-dalat-green" />
               <span>What's your daily budget (USD)?</span>
             </label>
             <select
               value={formData.budget}
               onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
               required
-              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-pink focus:ring-4 focus:ring-dalat-pink/20 outline-none transition-all duration-300 bg-white/90 cursor-pointer text-sm md:text-base"
+              className="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-xl focus:border-dalat-green focus:ring-4 focus:ring-dalat-green/20 outline-none transition-all duration-300 bg-white/90 cursor-pointer text-sm md:text-base"
             >
               <option value="">Select budget</option>
               <option value="low">Under $30 (Budget)</option>
@@ -240,14 +240,14 @@ const SurveyPage = () => {
           {/* Transport */}
           <div>
             <label className="flex items-center space-x-2 font-bold text-gray-800 mb-4 text-sm md:text-base">
-              <Car className="w-5 h-5 text-dalat-pink" />
+              <Car className="w-5 h-5 text-dalat-green" />
               <span>Do you have your own transportation?</span>
             </label>
             <div className="space-y-3">
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.transport === 'yes'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -255,14 +255,14 @@ const SurveyPage = () => {
                   checked={formData.transport === 'yes'}
                   onChange={(e) => setFormData({ ...formData, transport: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">Yes, I have motorbike/car</span>
               </label>
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.transport === 'no'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -270,7 +270,7 @@ const SurveyPage = () => {
                   checked={formData.transport === 'no'}
                   onChange={(e) => setFormData({ ...formData, transport: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">No, I'll need ride services</span>
               </label>
@@ -286,8 +286,8 @@ const SurveyPage = () => {
             <div className="space-y-3">
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.personality === 'extrovert'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -295,14 +295,14 @@ const SurveyPage = () => {
                   checked={formData.personality === 'extrovert'}
                   onChange={(e) => setFormData({ ...formData, personality: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">🎉 Extrovert - I love meeting new people</span>
               </label>
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.personality === 'introvert'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -310,7 +310,7 @@ const SurveyPage = () => {
                   checked={formData.personality === 'introvert'}
                   onChange={(e) => setFormData({ ...formData, personality: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">🤫 Introvert - I prefer quiet exploration</span>
               </label>
@@ -326,8 +326,8 @@ const SurveyPage = () => {
             <div className="space-y-3">
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.travelStyle === 'group'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -335,14 +335,14 @@ const SurveyPage = () => {
                   checked={formData.travelStyle === 'group'}
                   onChange={(e) => setFormData({ ...formData, travelStyle: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">👨‍👩‍👧‍👦 With group/family</span>
               </label>
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.travelStyle === 'solo'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -350,7 +350,7 @@ const SurveyPage = () => {
                   checked={formData.travelStyle === 'solo'}
                   onChange={(e) => setFormData({ ...formData, travelStyle: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">🚶 Solo traveler</span>
               </label>
@@ -360,14 +360,14 @@ const SurveyPage = () => {
           {/* Transportation Type */}
           <div>
             <label className="flex items-center space-x-2 font-bold text-gray-800 mb-4 text-sm md:text-base">
-              <Car className="w-5 h-5 text-dalat-pink" />
+              <Car className="w-5 h-5 text-dalat-green" />
               <span>What type of transportation will you use?</span>
             </label>
             <div className="space-y-3">
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.transportType === 'rental'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -375,14 +375,14 @@ const SurveyPage = () => {
                   checked={formData.transportType === 'rental'}
                   onChange={(e) => setFormData({ ...formData, transportType: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">🚗 Rental car/motorbike</span>
               </label>
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.transportType === 'pickup'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -390,14 +390,14 @@ const SurveyPage = () => {
                   checked={formData.transportType === 'pickup'}
                   onChange={(e) => setFormData({ ...formData, transportType: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">🚐 Pickup/shuttle service</span>
               </label>
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.transportType === 'own'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -405,7 +405,7 @@ const SurveyPage = () => {
                   checked={formData.transportType === 'own'}
                   onChange={(e) => setFormData({ ...formData, transportType: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">🏍️ My own vehicle</span>
               </label>
@@ -421,8 +421,8 @@ const SurveyPage = () => {
             <div className="space-y-3">
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.hasItinerary === 'yes'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -430,14 +430,14 @@ const SurveyPage = () => {
                   checked={formData.hasItinerary === 'yes'}
                   onChange={(e) => setFormData({ ...formData, hasItinerary: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">✅ Yes, I have a detailed plan</span>
               </label>
               <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                 formData.hasItinerary === 'no'
-                  ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                  : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                  ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                  : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
               }`}>
                 <input
                   type="radio"
@@ -445,7 +445,7 @@ const SurveyPage = () => {
                   checked={formData.hasItinerary === 'no'}
                   onChange={(e) => setFormData({ ...formData, hasItinerary: e.target.value })}
                   required
-                  className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                  className="w-5 h-5 accent-dalat-green cursor-pointer"
                 />
                 <span className="font-medium text-gray-800 text-sm md:text-base">🗺️ No, I need AI to help me plan</span>
               </label>
@@ -470,8 +470,8 @@ const SurveyPage = () => {
                   key={mood.value}
                   className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
                     formData.currentMood === mood.value
-                      ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                      : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                      ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                      : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
                   }`}
                 >
                   <input
@@ -480,7 +480,7 @@ const SurveyPage = () => {
                     checked={formData.currentMood === mood.value}
                     onChange={(e) => setFormData({ ...formData, currentMood: e.target.value })}
                     required
-                    className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                    className="w-5 h-5 accent-dalat-green cursor-pointer"
                   />
                   <span className="text-xl">{mood.icon}</span>
                   <span className="font-medium text-gray-800 text-sm md:text-base">{mood.label}</span>
@@ -498,14 +498,14 @@ const SurveyPage = () => {
             
             <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
               formData.photoInterest
-                ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
             }`}>
               <input
                 type="checkbox"
                 checked={formData.photoInterest}
                 onChange={(e) => setFormData({ ...formData, photoInterest: e.target.checked })}
-                className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                className="w-5 h-5 accent-dalat-green cursor-pointer"
               />
               <span className="text-xl">📸</span>
               <span className="font-medium text-gray-800 text-sm md:text-base">I'm interested in photo locations</span>
@@ -513,14 +513,14 @@ const SurveyPage = () => {
 
             <label className={`flex items-center space-x-3 p-3 md:p-4 rounded-xl cursor-pointer transition-all duration-300 border-2 ${
               formData.findBuddies
-                ? 'bg-gradient-to-r from-dalat-pink/20 to-dalat-blue/20 border-dalat-pink'
-                : 'bg-white/60 border-gray-200 hover:border-dalat-pink/50 hover:bg-dalat-pink/5'
+                ? 'bg-gradient-to-r from-dalat-green/20 to-dalat-yellow/20 border-dalat-green'
+                : 'bg-white/60 border-gray-200 hover:border-dalat-green/50 hover:bg-dalat-green/5'
             }`}>
               <input
                 type="checkbox"
                 checked={formData.findBuddies}
                 onChange={(e) => setFormData({ ...formData, findBuddies: e.target.checked })}
-                className="w-5 h-5 accent-dalat-pink cursor-pointer"
+                className="w-5 h-5 accent-dalat-green cursor-pointer"
               />
               <span className="text-xl">🤝</span>
               <span className="font-medium text-gray-800 text-sm md:text-base">I want to find travel buddies</span>
