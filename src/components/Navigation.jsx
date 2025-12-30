@@ -11,13 +11,13 @@ const Navigation = () => {
   const isActive = (path) => location.pathname === path
 
   return (
-    <nav className="bg-white/98 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b-4 border-dalat-green">
+    <nav className="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dalat-green">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <img src="/img/DasiLari_logo.png" alt="DasiLari Logo" className="h-10 md:h-12 w-auto" />
-            <span className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-dalat-green to-dalat-yellow bg-clip-text text-transparent">
+            <span className="text-xl md:text-2xl font-extrabold text-dalat-green">
               DasiLari
             </span>
           </Link>
