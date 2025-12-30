@@ -16,7 +16,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <img src="/img/DasiLari_logo.jpg" alt="DasiLari Logo" className="h-10 md:h-12 w-auto rounded-lg" />
+            <img src="/img/DasiLari_logo.png" alt="DasiLari Logo" className="h-10 md:h-12 w-auto" />
             <span className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-dalat-green to-dalat-yellow bg-clip-text text-transparent">
               DasiLari
             </span>

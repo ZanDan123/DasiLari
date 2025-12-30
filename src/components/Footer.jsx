@@ -47,7 +47,7 @@ const Footer = () => {
           <div className="space-y-6">
             {/* Brand */}
             <div className="flex items-center space-x-3">
-              <img src="/img/DasiLari_logo.jpg" alt="DasiLari Logo" className="h-12 md:h-14 w-auto rounded-lg" />
+              <img src="/img/DasiLari_logo.png" alt="DasiLari Logo" className="h-12 md:h-14 w-auto" />
               <div>
                 <h3 className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-white to-dalat-yellow bg-clip-text text-transparent">
                   DasiLari
